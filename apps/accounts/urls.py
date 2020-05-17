@@ -1,4 +1,4 @@
-"""quiz_app URL Configuration
+"""quiz_api URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/2.2/topics/http/urls/
@@ -13,19 +13,3 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.urls import include, path
-from rest_framework.routers import DefaultRouter
-
-from apps.accounts import views
-
-# # Create a router and register our viewsets with it.
-# router = DefaultRouter()
-# router.register(r'contest/{id}/', views.QuizContestViewSet)
-
-
-# # The API URLs are now determined automatically by the router.
-# urlpatterns = router.urls
-
-# # urlpatterns = [
-#     path('contest/<int:id>/', views.QuizContestViewSet),
-# ]
