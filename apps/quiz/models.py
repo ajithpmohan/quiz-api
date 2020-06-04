@@ -31,7 +31,7 @@ class Answer(common_models.BaseModel):
     is_correct = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.question} - {self.text}'
+        return f'{self.text}'
 
 
 class Quiz(common_models.BaseModel):
@@ -80,4 +80,34 @@ class QuizContest(common_models.BaseModel):
         verbose_name_plural = 'QuizContests'
 
     def __str__(self):
-        return f'{self.user} - {self.quiz} - {self.score}'
+        return f'{self.quiz} - {self.user} - {self.get_status_display()}'
+
+    @property
+    def get_questions(self):
+        return self.quiz.question.all()
+
+
+class QuizContestResult(common_models.BaseModel):
+    contest = models.ForeignKey(
+        'quiz.QuizContest',
+        related_name='contest_results',
+        related_query_name='contest_result',
+        on_delete=models.CASCADE
+    )
+
+    question = models.ForeignKey(
+        'quiz.Question',
+        related_name='contest_results',
+        related_query_name='contest_result',
+        on_delete=models.CASCADE
+    )
+
+    answer = models.ForeignKey('quiz.Answer', on_delete=models.CASCADE, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'QuizContestResult'
+        verbose_name_plural = 'QuizContestResults'
+        unique_together = [['contest', 'question']]
+
+    def __str__(self):
+        return f'{self.question} - {self.answer}'
