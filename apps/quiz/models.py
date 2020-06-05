@@ -86,6 +86,10 @@ class QuizContest(common_models.BaseModel):
     def get_questions(self):
         return self.quiz.question.all()
 
+    @property
+    def get_results(self):
+        return self.contest_results.all()
+
 
 class QuizContestResult(common_models.BaseModel):
     contest = models.ForeignKey(

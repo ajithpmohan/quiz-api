@@ -58,5 +58,5 @@ class QuizContestViewset(viewsets.ModelViewSet):
         serializer = self.get_serializer_class()(data=request.data, many=True, context=context)
         serializer.is_valid(raise_exception=True)
         serializer.save()
-        serializer = self.get_serializer_class()(self.get_object().contest_results.all(), many=True)
+        serializer = self.get_serializer_class()(self.get_object().get_results, many=True)
         return Response(serializer.data)

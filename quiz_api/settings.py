@@ -45,6 +45,9 @@ INSTALLED_APPS = [
     'apps.quiz',
 
     'rest_framework',
+    'drf_yasg',
+    'debug_toolbar',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +58,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'quiz_api.urls'
@@ -136,3 +140,14 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ],
 }
+
+SWAGGER_SETTINGS = {
+    'LOGIN_URL': 'admin:login',
+    'LOGOUT_URL': 'admin:logout',
+}
+
+DEBUG_TOOLBAR_CONFIG = {
+    'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
+}
+
+SHELL_PLUS = "bpython"
