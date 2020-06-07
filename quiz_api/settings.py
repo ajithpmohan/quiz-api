@@ -139,6 +139,7 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.BrowsableAPIRenderer',
         'rest_framework.renderers.JSONRenderer',
     ],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json',
 }
 
 SWAGGER_SETTINGS = {
@@ -147,7 +148,7 @@ SWAGGER_SETTINGS = {
 }
 
 DEBUG_TOOLBAR_CONFIG = {
-    'SHOW_TOOLBAR_CALLBACK': lambda request: DEBUG,
+    'SHOW_TOOLBAR_CALLBACK': lambda request: False,
 }
 
 SHELL_PLUS = "bpython"

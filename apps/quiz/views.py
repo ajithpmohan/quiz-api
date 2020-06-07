@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from rest_framework import viewsets
+from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -59,4 +59,4 @@ class QuizContestViewset(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         serializer = self.get_serializer_class()(self.get_object().get_results, many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
