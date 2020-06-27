@@ -1,5 +1,7 @@
 # Quiz API using DRF and Docker
 
+[![Build Status](https://travis-ci.org/ajithpmohan/quiz-api.svg?branch=master)](https://travis-ci.org/ajithpmohan/quiz-api)
+
 ## System Requirements
 
 You need **Docker Engine** and **Docker Compose**. Install it from [Docker Website](https://docs.docker.com/)
@@ -9,12 +11,6 @@ You need **Docker Engine** and **Docker Compose**. Install it from [Docker Websi
 Download the repository:
 
     git clone https://github.com/ajithpmohan/quiz-api.git
-
-## Python Environment Setup
-
-Copy **.env.dev.sample** to **.env.dev**
-
-    cp .env.dev.sample .env.dev
 
 Try [python-decouple](https://simpleisbetterthancomplex.com/2015/11/26/package-of-the-week-python-decouple.html) library for handling environment variables.
 
