@@ -1,6 +1,6 @@
 # The first instruction is what image we want to base our container on
 # We Use an official Python runtime as a parent image
-FROM python:3.8.0-alpine
+FROM python:3.8.2-alpine
 
 # Set enviroment variables - Prevents Python from writing pyc files to disc
 ENV PYTHONDONTWRITEBYTECODE 1
@@ -22,10 +22,13 @@ RUN apk --no-cache add jpeg-dev zlib-dev freetype-dev lcms2-dev openjpeg-dev \
         tiff-dev tk-dev tcl-dev harfbuzz-dev fribidi-dev
 
 # Set the working directory
-WORKDIR /usr/src/app
+WORKDIR /usr/src/web
 
 # Copy the current directory contents into the container
-COPY . /usr/src/app/
+COPY . /usr/src/web/
 
 # Install any needed packages specified in requirements.txt
 RUN pip install -r requirements.txt
+
+# run entrypoint.sh
+ENTRYPOINT ["/usr/src/web/entrypoint.sh"]
