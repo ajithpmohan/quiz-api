@@ -1,10 +1,17 @@
 language: python
 
 python:
-    - 3.8
+  - 3.8
 
 services:
-    - docker
+  - docker
+
+before_script:
+  - docker-compose up -d
+  - docker cp .git quiz-web:/usr/src/web/ # helps coveralls to accurately report the branch and have the badge work.
 
 script:
-    - docker-compose run web python manage.py test apps
+  - docker-compose exec web coverage run manage.py test apps
+
+after_success:
+  - docker-compose exec -e TRAVIS_JOB_ID="$TRAVIS_JOB_ID" -e TRAVIS_BRANCH="$TRAVIS_BRANCH" -e COVERALLS_REPO_TOKEN="$COVERALLS_REPO_TOKEN" web coveralls

@@ -1,6 +1,6 @@
 # Quiz API using DRF and Docker
 
-[![Build Status](https://travis-ci.org/ajithpmohan/quiz-api.svg?branch=master)](https://travis-ci.org/ajithpmohan/quiz-api)
+[![Build Status](https://travis-ci.org/ajithpmohan/quiz-api.svg?branch=master)](https://travis-ci.org/ajithpmohan/quiz-api) [![Coverage Status](https://coveralls.io/repos/github/ajithpmohan/quiz-api/badge.svg?branch=master)](https://coveralls.io/github/ajithpmohan/quiz-api?branch=master)
 
 ## System Requirements
 

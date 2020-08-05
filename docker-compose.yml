@@ -3,6 +3,7 @@ version: '3.7'
 services:
   postgres:
     image: postgres:12.1-alpine
+    container_name: quiz-postgres
     volumes:
       - postgres-data:/var/lib/postgresql/data/
     environment:
@@ -11,6 +12,7 @@ services:
       - POSTGRES_PASSWORD=quiz
   web:
     build: ./web
+    container_name: quiz-web
     command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - ./web/:/usr/src/web/
